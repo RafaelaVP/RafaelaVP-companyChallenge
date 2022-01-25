@@ -1,5 +1,5 @@
 const express = require('express');
-const router = require('./app/routes');
+const router = require('./app/routes/index');
 require('./infra/database/connectDatabase');
 
 class App {
