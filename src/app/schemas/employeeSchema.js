@@ -17,12 +17,17 @@ const Employees = mongoose.Schema(
         enum: ['gerente', 'vendedor','caixa'],
         required: true
     },
-    birthday: {
+    situation: {
       type: String,
       required: true,
-      select: false
+      default: 'active'
+    },
+    birthday: {
+      type: Date,
+      required: true,
     }
   },
+ 
   {
     timestamps: true
   }
