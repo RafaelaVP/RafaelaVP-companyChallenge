@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const Employees = mongoose.Schema(
   {
@@ -13,7 +14,7 @@ const Employees = mongoose.Schema(
     },
     office: {
         type: String,
-        enum: ['gerente', 'vendedor'],
+        enum: ['gerente', 'vendedor','caixa'],
         required: true
     },
     birthday: {
@@ -27,6 +28,6 @@ const Employees = mongoose.Schema(
   }
 );
 
-
+Employees.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('employees', Employees);

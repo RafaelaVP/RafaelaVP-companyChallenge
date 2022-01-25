@@ -6,8 +6,16 @@ class BaseRepository {
         return await this._schema.create(payload);
     }
     async findByParams(search) {
-        const result = await  this._schema.find(search)
-        return result
+        const {limit = 100, offset = 0, ...query} = search
+        return  this._schema.paginate(
+          {...query},
+
+          {
+            limit,
+            offset
+          }
+        )
+       
     }
     async update(_id, payload) {
         return this._schema.findByIdAndUpdate(_id, payload, { new: true });
