@@ -1,7 +1,9 @@
 const EmployeeRepository = require('../repository/EmployeeRepository');
+const validCPF = require('../utils/Validcpf');
 
 class EmployeeService {
   async create(payload) {
+    validCPF(payload.cpf)
     const result = await EmployeeRepository.create(payload);
     return result;
   }
