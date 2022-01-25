@@ -5,8 +5,8 @@ class BaseRepository {
     async create(payload) {
         return await this._schema.create(payload);
     }
-    async findByParams(payload) {
-        const result = await  this.schema.find(payload)
+    async findByParams(search) {
+        const result = await  this._schema.find(search)
         return result
     }
     async update(_id, payload) {
