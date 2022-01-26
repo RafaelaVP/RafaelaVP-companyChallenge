@@ -1,7 +1,13 @@
 const mongoose = require('mongoose');
-
+const { randomUUID } = require('crypto');
 const Products = mongoose.Schema(
   {
+    _id: {
+      type: String,
+      required: true,
+      default: randomUUID
+  
+    },
     name: {
       type: String,
       required: true
@@ -12,7 +18,6 @@ const Products = mongoose.Schema(
     },
     price: {
         type: Number,
-        enum: ['gerente', 'vendedor'],
         required: true
     },
     employee_id: {
