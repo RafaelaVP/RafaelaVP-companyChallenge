@@ -3,7 +3,7 @@ const validCPF = require('../utils/Validcpf');
 
 class EmployeeService {
   async create(payload) {
-    validCPF(payload.cpf)
+    validCPF(payload.cpf);
     const result = await EmployeeRepository.create(payload);
     return result;
   }
