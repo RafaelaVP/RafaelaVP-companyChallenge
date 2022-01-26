@@ -24,9 +24,5 @@ class BaseRepository {
       async delete(_id) {
         return this._schema.findByIdAndRemove(_id);
       }
-    
-      async getById(id) {
-        return this._schema.findById(id);
-      }
 }
  module.exports = BaseRepository;
