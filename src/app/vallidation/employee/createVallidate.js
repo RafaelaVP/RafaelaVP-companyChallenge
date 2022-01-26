@@ -2,13 +2,13 @@ const Joi = require('joi');
 
 module.exports = async (req, res, next) => {
   try {
-    const schemaEmployees = Joi.object({
+    const schema = Joi.object({
       name: Joi.string().min(4).max(50).required(),
       cpf: Joi.string().min(11).max(14).required(),
-      office: Joi.string(),
-      birthday: Joi.date().format('DD/MM/YYYY').less(Date.now()).required()
+      office: Joi.string().valid('gerente', 'vendedor', 'caixa').required(),
+      birthday: Joi.date().less(Date.now()).required()
     });
-    const { error } = await schemaEmployees.validate(req.body, { abortEarly: false });
+    const { error } =  schema.validate(req.body, { abortEarly: false });
     if (error) throw error;
     return next();
   } catch (error) {
