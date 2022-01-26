@@ -3,7 +3,7 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 const { randomUUID } = require('crypto');
 const Employees = mongoose.Schema(
   {
-    _id: {
+      _id: {
       type: String,
       required: true,
       default: randomUUID
@@ -34,9 +34,9 @@ const Employees = mongoose.Schema(
     }
   },
  
-  {
-    timestamps: true
-  }
+   {
+     timestamps: true
+   }
 );
 
 Employees.plugin(mongoosePaginate);
