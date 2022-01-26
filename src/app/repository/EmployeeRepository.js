@@ -1,5 +1,5 @@
 const schemaEmployees = require('../schemas/employeeSchema');
-const BaseRepository = require('./BaseRepository')
+const BaseRepository = require('./BaseRepository');
 
 class EmployeeRepository extends BaseRepository {
   constructor() {

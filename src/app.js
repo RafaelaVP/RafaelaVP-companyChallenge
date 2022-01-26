@@ -1,5 +1,5 @@
 const express = require('express');
-const router = require('./app/routes/index');
+const router = require('./routes/index');
 require('./infra/database/connectDatabase');
 
 class App {
@@ -11,7 +11,6 @@ class App {
 
   middlewares() {
     this.server.use(express.json());
-    
   }
 
   routes() {
