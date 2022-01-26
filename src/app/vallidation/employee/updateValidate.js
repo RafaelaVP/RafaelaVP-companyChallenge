@@ -6,6 +6,7 @@ module.exports = async (req, res, next) => {
       name: Joi.string().min(4).max(50),
       cpf: Joi.string().min(11).max(14),
       office: Joi.string().valid('gerente', 'vendedor', 'caixa'),
+      situation: Joi.string().valid('activate', 'deactivate'),
       birthday: Joi.date().less(Date.now()),
     });
     const { error } =  schema.validate(req.body, { abortEarly: false });
