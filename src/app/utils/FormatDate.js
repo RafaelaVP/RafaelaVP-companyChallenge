@@ -1,12 +1,13 @@
-const moment = require('moment')
+const moment = require('moment');
+
 class FormatDate {
-    formatDateToSerialize(date) {
-      return moment(date, ).utc('YYYY-MM-DD').format('DD/MM/YYYY');
-    }
-    formatToBase(date) {
-      return moment(date, 'DD/MM/YYYY').utc().format('YYYY-MM-DD');
-    }
+  formatDateToSerialize(date) {
+    return moment(date, 'YYYY-MM-DD').format('DD/MM/YYYY');
   }
-  
-  module.exports = new FormatDate();
-  
+
+  formatToBase(date) {
+    return moment(date, 'DD/MM/YYYY').format('YYYY-MM-DD');
+  }
+}
+
+module.exports = new FormatDate();
