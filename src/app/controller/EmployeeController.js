@@ -61,18 +61,7 @@ class EmployeeController {
             
           });
         }
-      }
-    
-      async getById(req, res) {
-        try {
-          const { _id } = req.params;
-          const result = await EmployeeService.getById(_id);
-          return res.status(200).json(result);
-        } catch (error) {
-          return res.status(400).json(message.error);
-        }
-      }
-    
+      }  
 }
 
 module.exports = new EmployeeController();
