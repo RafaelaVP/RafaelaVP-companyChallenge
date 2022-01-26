@@ -32,9 +32,9 @@ class EmployeeController {
     }
     async update(req, res) {
         try {
-          const { id } = req.params;
+          const { employee_id } = req.params;
           const update = req.body;
-          const result = await EmployeeService.update(id, update);
+          const result = await EmployeeService.update(employee_id, update);
           return res.status(200).json(serialize(result));
         } catch (error) {
           return res.status(400).json({
@@ -49,8 +49,8 @@ class EmployeeController {
     
       async delete(req, res) {
         try {
-          const { id } = req.params;
-           await EmployeeService.delete(id);
+          const { employee_id } = req.params;
+           await EmployeeService.delete(employee_id);
           return res.status(204).json({});
         } catch (error) {
           return res.status(400).json({

@@ -1,10 +1,10 @@
 const FormatCPF = require('../utils/formatCpf')
 const FormatDate = require('../utils/FormatDate')
 const serialize = ({ _id, name, cpf, birthday, office, situation }) => ({
-    _id,
+  employees_id: _id,
     name,
     cpf: FormatCPF.format(cpf),
-    birthday: FormatDate.formatDateToRequest(birthday),
+    birthday: FormatDate.formatDateToSerialize(birthday),
     office,
     situation,
     

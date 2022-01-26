@@ -3,7 +3,8 @@ class BaseRepository {
         this._schema = schema;
     }
     async create(payload) {
-        return await this._schema.create(payload);
+        const result = await this._schema.create(payload);
+        return result;
     }
     async findByParams(search) {
         const {limit = 100, offset = 0, ...query} = search
@@ -17,8 +18,8 @@ class BaseRepository {
         )
        
     }
-    async update(_id, payload) {
-        return this._schema.findByIdAndUpdate(_id, payload, { new: true });
+    async update(id, payload) {
+        return this._schema.findByIdAndUpdate(id, payload, { new: true });
       }
     
       async delete(_id) {
