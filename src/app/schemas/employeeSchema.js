@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
 const { randomUUID } = require('crypto');
+
 const Employees = mongoose.Schema(
   {
-      _id: {
+    _id: {
       type: String,
       required: true,
       default: randomUUID
-  
     },
     name: {
       type: String,
@@ -19,9 +19,9 @@ const Employees = mongoose.Schema(
       unique: true
     },
     office: {
-        type: String,
-        enum: ['gerente', 'vendedor','caixa'],
-        required: true
+      type: String,
+      enum: ['gerente', 'vendedor', 'caixa'],
+      required: true
     },
     situation: {
       type: String,
@@ -29,14 +29,14 @@ const Employees = mongoose.Schema(
       default: 'active'
     },
     birthday: {
-      type: Date,
-      required: true,
+      type: String,
+      required: true
     }
   },
- 
-   {
-     timestamps: true
-   }
+
+  {
+    timestamps: true
+  }
 );
 
 Employees.plugin(mongoosePaginate);
