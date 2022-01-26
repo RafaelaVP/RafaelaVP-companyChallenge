@@ -12,11 +12,7 @@ function validCPF(cpf) {
       Cpf === '77777777777' ||
       Cpf === '88888888888' ||
       Cpf === '99999999999'
-    )
-      throw new Error({
-        description: 'Bad Request',
-        name: `Invalid CPF ${cpf}`
-      });
+    ) return 'Invalid CPF'
   
     let add = 0;
     let i;
@@ -25,20 +21,16 @@ function validCPF(cpf) {
     rev = 11 - (add % 11);
     if (rev === 10 || rev === 11) rev = 0;
     if (rev !== parseInt(Cpf.charAt(9), 10))
-      throw new Error({
-        description: 'Bad Request',
-        name: `Invalid CPF ${cpf}`
-      });
+    return 'Invalid CPF'
   
     add = 0;
     for (i = 0; i < 10; i++) add += parseInt(Cpf.charAt(i), 10) * (11 - i);
     rev = 11 - (add % 11);
     if (rev === 10 || rev === 11) rev = 0;
     if (rev !== parseInt(Cpf.charAt(10), 10))
-      throw new Error({
-        description: 'Bad Request',
-        name: `Invalid CPF ${cpf}`
-      });
+    return 'Invalid CPF'
+
+    return null;
   }
   
   module.exports = validCPF;
