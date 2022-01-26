@@ -1,10 +1,11 @@
 const EmployeeController = require('../controller/EmployeeController');
-// const validCreate = require ('../vallidation/employee/createVallidate')
+const validCreate = require ('../vallidation/employee/createVallidate');
+const validUpdate = require('../vallidation/employee/updateValidate');
 module.exports = (server, routes, prefix = '/api/v1/employee') => {
-  routes.post('/', EmployeeController.create);
+  routes.post('/',validCreate, EmployeeController.create);
   routes.get('/:id',  EmployeeController.getById);
   routes.get('/', EmployeeController.getAll);
-  routes.put('/:id',  EmployeeController.update);
+  routes.put('/:employee_id', validUpdate, EmployeeController.update);
   routes.delete('/:id',  EmployeeController.delete);
   server.use(prefix, routes);
 };
