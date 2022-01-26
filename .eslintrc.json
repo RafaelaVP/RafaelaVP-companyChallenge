@@ -1,0 +1,43 @@
+{
+  "env": {
+    "commonjs": true,
+
+    "es2021": true,
+
+    "node": true
+  },
+
+  "extends": ["airbnb-base", "eslint-config-prettier"],
+
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+
+  "plugins": ["eslint-plugin-prettier"],
+
+  "rules": {
+    "prettier/prettier": "error",
+
+    "class-methods-use-this": "off",
+
+    "camelcase": "off",
+
+    "new-cap": 1,
+
+    "no-console": "off",
+
+    "no-param-reassign": ["error", { "props": false }],
+
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+
+    "no-underscore-dangle": "off",
+
+    "no-useless-escape": "off",
+
+    "no-restricted-syntax": "off",
+
+    "linebreak-style": ["error", "windows"],
+
+    "comma-dangle": "off"
+  }
+}
