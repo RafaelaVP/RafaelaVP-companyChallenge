@@ -4,10 +4,10 @@ const BadRequest = require('../errors/BadRequest');
 module.exports = async (req, res, next) => {
   try {
     const schema = Joi.object({
-      id: Joi.string().min(24).max(24)
+      _id: Joi.string()
     });
 
-    const { error } = await schema.validate(req.params, { abortEarly: false });
+    const { error } = schema.validate(req.params, { abortEarly: false });
     if (error) throw new BadRequest(error.message);
     return next();
   } catch (error) {
