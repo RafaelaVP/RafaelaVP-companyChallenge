@@ -1,13 +1,8 @@
 const mongoose = require('mongoose');
-const { randomUUID } = require('crypto');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const Products = mongoose.Schema(
   {
-    _id: {
-      type: String,
-      required: true,
-      default: randomUUID
-    },
     name: {
       type: String,
       required: true
@@ -31,4 +26,5 @@ const Products = mongoose.Schema(
   }
 );
 
+Products.plugin(mongoosePaginate);
 module.exports = mongoose.model('products', Products);
