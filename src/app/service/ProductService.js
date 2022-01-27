@@ -10,20 +10,21 @@ class ProductService {
 
     if (!empployeeValid) throw new NotFound('id');
 
-    if (empployeeValid.docs[0]._doc.office !== 'gerente') throw new BadRequest('Tem que ser gerente');
+    if (empployeeValid.docs[0]._doc.office !== 'gerente')
+      throw new BadRequest('error required active manager to create the product');
 
-    if (empployeeValid.docs[0]._doc.situation === 'deactivate') throw new BadRequest('Tem que estar ativo');
+    if (empployeeValid.docs[0]._doc.situation === 'deactivate') throw new BadRequest('error manager must be active.');
     const result = await ProductRepository.create(payload);
 
     return result;
   }
 
   async findAll({ min_price = 0, max_price = 13, ...search }) {
-    const test = {
+    const priceSearch = {
       price: { $gte: min_price, $lte: max_price },
       ...search
     };
-    const result = await ProductRepository.findByParams(test);
+    const result = await ProductRepository.findByParams(priceSearch);
     return result;
   }
 }
