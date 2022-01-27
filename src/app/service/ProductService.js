@@ -18,20 +18,14 @@ class ProductService {
     return result;
   }
 
-  async findAll(search, min_price = 0, max_price = 20000) {
+  async findAll({ min_price = 0, max_price = 13, ...search }) {
     const test = {
-      price: { $gte: min_price, $lte: max_price }
+      price: { $gte: min_price, $lte: max_price },
+      ...search
     };
-    const result = await ProductRepository.findByParams(search, test);
+    const result = await ProductRepository.findByParams(test);
     return result;
   }
 }
 
 module.exports = new ProductService();
-
-// const min_price = 0;
-// const max_price = 100;
-// if (search.docs[0]._doc.price >= min_price)
-// if (test <= max_price) {
-//   return test;
-// }
