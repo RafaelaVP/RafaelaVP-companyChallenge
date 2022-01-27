@@ -4,9 +4,9 @@ const BadRequest = require('../../errors/BadRequest');
 module.exports = async (req, res, next) => {
   try {
     const schema = Joi.object({
-      name: Joi.string().min(4).max(50).required(),
-      cpf: Joi.string().min(11).max(11).required(),
-      office: Joi.string().valid('gerente', 'vendedor', 'caixa').required(),
+      name: Joi.string().min(4).max(50).trim().required(),
+      cpf: Joi.string().min(11).max(11).trim().required(),
+      office: Joi.string().valid('gerente', 'vendedor', 'caixa').trim().required(),
       birthday: Joi.date().format('DD/MM/YYYY').less(Date.now()).required()
     });
     const { error } = schema.validate(req.body, { abortEarly: false });
