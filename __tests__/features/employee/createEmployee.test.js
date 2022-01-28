@@ -4,7 +4,7 @@ const app = require('../../../src/app');
 describe('create employee', () => {
   it('returns status 201', async () => {
     const employeeMock = {
-      name: 'Porto Alegre',
+      name: 'Rafaela Maria',
       cpf: '41303056038',
       office: 'gerente',
       birthday: '20/10/1990'
@@ -13,31 +13,35 @@ describe('create employee', () => {
     expect(response.statusCode).toEqual(201);
   });
 });
-//   it('returns bad request status 400 ', async () => {
-//     const errorMock = {};
+it('returns bad request status 400 cpf long ', async () => {
+  const errorMock = {
+    name: 'Rafaela Maria',
+    cpf: '329483748347832032',
+    office: 'gerente',
+    birthday: '20/10/1990'
+  };
 
-//     const res = await request(app).post('/api/clients/').send(errorMock);
-
-//     expect(res.statusCode).toEqual(400);
-//   });
-//   it('returns bad request', async () => {
-//     const cityMock = {
-//       city: 'Porto Alegre',
-//       state: 'RS'
-//     };
-//     const resCity = await request(app).post('/api/cities/').send(cityMock);
-
-//     const clientMock = {
-//       name: 'Rafaela',
-//       gender: 'F',
-//       city_home: `${resCity.body.id}`,
-//       birthdate: '11/10/1995'
-//     };
-//     await request(app).post('/api/clients/').send(clientMock);
-//     const resp = await request(app).post('/api/clients/').send(clientMock);
-//     expect(resp.body).toEqual({
-//       description: 'Bad request',
-//       message: ' Already Exists'
-//     });
-//   });
-// });
+  const res = await request(app).post('/api/v1/employee').send(errorMock);
+  expect(res.statusCode).toEqual(400);
+  expect(res.body).toEqual({
+    message: 'Bad Request',
+    details: {
+      message: '"cpf" length must be less than or equal to 11 characters long'
+    }
+  });
+});
+it('returns bad request cpf invalid', async () => {
+  const employeeMock = {
+    name: 'Porto Alegre',
+    cpf: '11111111111',
+    office: 'gerente',
+    birthday: '20/10/1990'
+  };
+  const resp = await request(app).post('/api/v1/employee').send(employeeMock);
+  expect(resp.body).toEqual({
+    message: 'Bad Request',
+    details: {
+      description: 'Invalid CPF'
+    }
+  });
+});
