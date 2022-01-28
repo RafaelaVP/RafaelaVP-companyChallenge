@@ -203,9 +203,6 @@
           "office": {
             "type": "string"
           },
-          "situation": {
-            "type": "string"
-          },
           "birthday": {
             "type": "string"
           }
@@ -221,9 +218,6 @@
             "type": "string"
           },
           "office": {
-            "type": "string"
-          },
-          "situation": {
             "type": "string"
           },
           "birthday": {
