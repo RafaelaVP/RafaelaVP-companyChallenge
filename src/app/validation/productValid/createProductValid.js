@@ -6,8 +6,10 @@ module.exports = async (req, res, next) => {
     const schema = Joi.object({
       name: Joi.string().min(4).max(50).required(),
       category: Joi.string().required(),
-      price: Joi.string().requerid(),
-      employee_id: Joi.string().min(24).max(24).pattern('^[a-fA-F0-9]').requerid()
+      price: Joi.string()
+        .regex(/^\s*(?=.*[1-9])\d*(?:\.\d{1,2})?\s*$/)
+        .required(),
+      employee_id: Joi.string().required()
     });
     const { error } = schema.validate(req.body, { abortEarly: false });
     if (error) throw new BadRequest(error.message);
