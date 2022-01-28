@@ -5,7 +5,7 @@
   <!-- <a href="https://crud_desafio.netlify.app">Demo</a> -->
 </div>
 
-<h1 align="center">Api Registration</h1>
+<h1 align="center">Company Maria</h1>
 
 <p align="center">
   <img alt="Github top language" src="https://img.shields.io/github/languages/top/RafaelaVP/RafaelaVP-companyChallenge?color=56BEB8">
