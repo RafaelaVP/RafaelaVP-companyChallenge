@@ -1,8 +1,9 @@
 const ProductController = require('../app/controller/ProductController');
-// const validCreate = require('../app/validation/productValid/createProductValid');
+const validCreate = require('../app/validation/productValid/createProductValid');
+const validGetAll = require('../app/validation/productValid/findAllProduct');
 
 module.exports = (server, routes, prefix = '/api/v1/product') => {
-  routes.post('/', ProductController.create);
-  routes.get('/', ProductController.getAll);
+  routes.post('/', validCreate, ProductController.create);
+  routes.get('/', validGetAll, ProductController.getAll);
   server.use(prefix, routes);
 };
