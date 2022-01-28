@@ -1,14 +1,19 @@
 const Joi = require('joi');
 const BadRequest = require('../../errors/BadRequest');
+const { enumOffice } = require('../../utils/enum');
+const { enumSituation } = require('../../utils/enum');
 
 module.exports = async (req, res, next) => {
   try {
     const schema = Joi.object({
       name: Joi.string().min(4).max(50).trim(),
-      cpf: Joi.string().min(11).max(11).trim(),
-      office: Joi.string().valid('gerente', 'vendedor', 'caixa').trim(),
-      situation: Joi.string().valid('activate', 'deactivate').trim(),
-      birthday: Joi.date().less(Date.now()).trim()
+      office: Joi.string()
+        .valid(...enumOffice)
+        .trim()
+        .required(),
+      situation: Joi.string()
+        .valid(...enumSituation)
+        .trim()
     });
     const { error } = schema.validate(req.body, { abortEarly: false });
     if (error) throw new BadRequest(error.message);

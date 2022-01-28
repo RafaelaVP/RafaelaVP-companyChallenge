@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
+const { enumOffice } = require('../utils/enum');
 
 const Employees = mongoose.Schema(
   {
@@ -14,7 +15,7 @@ const Employees = mongoose.Schema(
     },
     office: {
       type: String,
-      enum: ['gerente', 'vendedor', 'caixa'],
+      enum: enumOffice,
       required: true
     },
     situation: {
