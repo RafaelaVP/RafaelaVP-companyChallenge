@@ -25,6 +25,7 @@ class ProductService {
       ...search
     };
     const result = await ProductRepository.findByParams(priceSearch);
+    if (result.docs.length === 0) throw new NotFound('Results not found');
     return result;
   }
 }
