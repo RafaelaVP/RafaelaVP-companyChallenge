@@ -38,6 +38,8 @@
 
     "linebreak-style": ["error", "windows"],
 
-    "comma-dangle": "off"
+    "comma-dangle": "off",
+
+    "no-undef": "off"
   }
 }
