@@ -4,7 +4,7 @@ const BadRequest = require('../errors/BadRequest');
 module.exports = async (req, res, next) => {
   try {
     const schema = Joi.object({
-      _id: Joi.string()
+      employee_id: Joi.string().min(24).max(24)
     });
 
     const { error } = schema.validate(req.params, { abortEarly: false });
