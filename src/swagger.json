@@ -40,7 +40,7 @@
         }
       },
       "post": {
-        "summary": "Create a new city",
+        "summary": "Create a new employee",
         "requestBody": {
           "content": {
             "application/json": {
