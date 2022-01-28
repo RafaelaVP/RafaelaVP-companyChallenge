@@ -23,13 +23,13 @@ class EmployeeService {
 
   async update(id, payload) {
     const idNotFound = await this.findAll({ _id: id });
-    if (!idNotFound) throw new NotFound('id not found in the base');
+    if (!idNotFound) throw new NotFound(id);
     return EmployeeRepository.update(id, payload);
   }
 
   async delete(id) {
     const idNotFound = await this.findAll({ _id: id });
-    if (!idNotFound) throw new NotFound('id not found in the base');
+    if (!idNotFound) throw new NotFound(id);
     return EmployeeRepository.delete(id);
   }
 }
