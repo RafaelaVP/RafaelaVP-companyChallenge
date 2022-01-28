@@ -1,0 +1,273 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "The api of a Company!",
+    "description": "This API aims to build a software for customer registration.",
+    "termsOfService": "http://localhost:3000/terms",
+    "contact": {
+      "email": "rafavalpint@gmail.com"
+    },
+    "version": "0.0.1"
+  },
+  "externalDocs": {
+    "description": "Github repository",
+    "url": "https://github.com/RafaelaVP/RafaelaVP-companyChallenge.git"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/v1",
+      "description": "API"
+    }
+  ],
+  "paths": {
+    "/employee": {
+      "get": {
+        "summary": "Search all employees!",
+        "responses": {
+          "200": {
+            "description": "success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Employees"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new city",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/employeeCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/employeeCreate"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cities/{id}": {
+      "put": {
+        "summary": "Update employee data!",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/employeeCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Employees"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found city.",
+            "content": {
+              "application/json": {
+                "example": "Not found"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete a employee!",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Employees"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found city.",
+            "content": {
+              "application/json": {
+                "example": "Not found"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/product/": {
+      "get": {
+        "summary": "Search all products!",
+        "responses": {
+          "200": {
+            "description": "Sucess",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Products"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new product!",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/productCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/productCreate"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Employees": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "cpf": {
+            "type": "string"
+          },
+          "office": {
+            "type": "string"
+          },
+          "situation": {
+            "type": "string"
+          },
+          "birthday": {
+            "type": "string"
+          }
+        }
+      },
+      "employeeCreate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "cpf": {
+            "type": "string"
+          },
+          "office": {
+            "type": "string"
+          },
+          "situation": {
+            "type": "string"
+          },
+          "birthday": {
+            "type": "string"
+          }
+        }
+      },
+      "Products": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "employee_id": {
+            "type": "string"
+          }
+        }
+      },
+      "productCreate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number"
+          },
+          "employee_id": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
