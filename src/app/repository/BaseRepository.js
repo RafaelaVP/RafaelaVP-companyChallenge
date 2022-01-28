@@ -9,7 +9,6 @@ class BaseRepository {
   }
 
   async findByParams(search) {
-    console.log(search);
     const { limit = 100, offset = 0, ...query } = search;
     return this._schema.paginate(
       query,
