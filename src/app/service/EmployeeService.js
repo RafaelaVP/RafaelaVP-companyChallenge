@@ -2,11 +2,11 @@ const BadRequest = require('../errors/BadRequest');
 const NotFound = require('../errors/NotFound');
 const EmployeeRepository = require('../repository/EmployeeRepository');
 const FormatDate = require('../utils/FormatDate');
-const validCPF = require('../utils/validCPF');
+const validCPF = require('../utils/validAndformatCPF');
 
 class EmployeeService {
   async create(payload) {
-    const isCPFinvalid = validCPF(payload.cpf);
+    const isCPFinvalid = validCPF.valid(payload.cpf);
 
     if (isCPFinvalid) throw new BadRequest(isCPFinvalid);
     const payloadDate = payload;

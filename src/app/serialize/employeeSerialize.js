@@ -1,4 +1,4 @@
-const FormatCPF = require('../utils/FormatCpf');
+const FormatCPF = require('../utils/validAndformatCPF');
 const FormatDate = require('../utils/FormatDate');
 
 const serialize = ({ _id, name, cpf, birthday, office, situation }) => ({
